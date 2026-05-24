@@ -37,9 +37,9 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
             src={p.imgFront}
             alt={`Sumaboss ${p.name}`}
             loading="lazy"
-            className="max-w-[90%] max-h-[90%] object-contain -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
+            className="w-auto h-auto max-h-[220px] max-w-full object-contain -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
             style={{ 
-              filter: "drop-shadow(0px 15px 15px rgba(100,80,60,0.15)) contrast(1.15) saturate(1.15) brightness(1.05)",
+              filter: "drop-shadow(0px 15px 15px rgba(100,80,60,0.15))",
             }}
           />
         </div>

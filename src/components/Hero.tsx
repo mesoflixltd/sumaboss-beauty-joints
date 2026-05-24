@@ -47,23 +47,29 @@ export function Hero() {
           </div>
         </div>
         <div className="relative h-[600px] perspective-1000">
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <div className="absolute w-[420px] h-[420px] rounded-full bg-gradient-soft shadow-product" />
             <div className="absolute w-[320px] h-[320px] rounded-full border border-gold/30 animate-spin-slow" />
             
-            {heroImages.map((src, i) => (
-              <img
-                key={src}
-                src={src}
-                alt={`Sumaboss Product ${i + 1}`}
-                width={520}
-                height={520}
-                className={`absolute z-10 w-[460px] max-w-[90%] object-contain drop-shadow-2xl animate-float-down transition-opacity duration-1000 ${
-                  i === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ filter: "drop-shadow(0 30px 60px rgba(180,140,80,0.35)) contrast(1.1) saturate(1.1)" }}
-              />
-            ))}
+            {heroImages.map((src, i) => {
+              // Determine sliding position classes based on current index
+              let positionClass = "translate-x-[150%] opacity-0"; // Default: waiting on the right
+              if (i === currentIndex) {
+                positionClass = "translate-x-0 opacity-100 z-20"; // Active: center
+              } else if (i === (currentIndex - 1 + heroImages.length) % heroImages.length) {
+                positionClass = "-translate-x-[150%] opacity-0 z-10"; // Previous: sliding left
+              }
+
+              return (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`Sumaboss Product ${i + 1}`}
+                  className={`absolute w-auto h-auto max-w-[90%] max-h-[85%] object-contain drop-shadow-2xl transition-all duration-1000 ease-in-out ${positionClass}`}
+                  style={{ filter: "drop-shadow(0 30px 60px rgba(180,140,80,0.35))" }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
