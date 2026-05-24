@@ -3,11 +3,10 @@ import { ShoppingBag, Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
-  { to: "/science", label: "Science" },
-  { to: "/ritual", label: "Ritual" },
-  { to: "/journal", label: "Journal" },
+  { href: "/", label: "Home" },
+  { href: "/#shop", label: "Shop" },
+  { href: "/#science", label: "Science" },
+  { href: "/#ritual", label: "Ritual" },
 ];
 
 export function Navbar() {
