@@ -1,7 +1,21 @@
-import p1 from "@/assets/product-1.png";
+import { useState, useEffect } from "react";
+import jFront1 from "@/images/althroextrafronyt-removebg-preview.png";
+import jFront2 from "@/images/download-removebg-preview.png";
+import jFront3 from "@/images/zaminacol-removebg-preview.png";
 import { ArrowRight } from "lucide-react";
 
+const heroImages = [jFront1, jFront2, jFront3];
+
 export function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative min-h-screen pt-24 pb-16 flex items-center bg-gradient-hero overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -36,14 +50,20 @@ export function Hero() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="absolute w-[420px] h-[420px] rounded-full bg-gradient-soft shadow-product" />
             <div className="absolute w-[320px] h-[320px] rounded-full border border-gold/30 animate-spin-slow" />
-            <img
-              src={p1}
-              alt="Sumaboss Joint Glow hero bottle"
-              width={520}
-              height={520}
-              className="relative z-10 w-[460px] drop-shadow-2xl animate-float-down"
-              style={{ filter: "drop-shadow(0 30px 60px rgba(180,140,80,0.35))" }}
-            />
+            
+            {heroImages.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`Sumaboss Product ${i + 1}`}
+                width={520}
+                height={520}
+                className={`absolute z-10 w-[460px] max-w-[90%] object-contain drop-shadow-2xl animate-float-down transition-opacity duration-1000 ${
+                  i === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
+                style={{ filter: "drop-shadow(0 30px 60px rgba(180,140,80,0.35)) contrast(1.1) saturate(1.1)" }}
+              />
+            ))}
           </div>
         </div>
       </div>
