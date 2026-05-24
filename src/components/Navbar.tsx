@@ -38,7 +38,7 @@ export function Navbar() {
             </button>
             <Link to="/login" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition">Sign in</Link>
             <Link to="/signup" className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-foreground text-background text-xs tracking-wide hover:bg-gradient-gold transition-all hover:scale-105">
-              Join the ritual
+              Begin glowing
             </Link>
             <button aria-label="Cart" className="relative text-foreground hover:scale-110 transition">
               <ShoppingBag className="w-5 h-5" />
