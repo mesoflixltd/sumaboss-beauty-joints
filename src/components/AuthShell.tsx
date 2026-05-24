@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ReactNode, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import p1 from "@/assets/product-1.png";
 import p2 from "@/assets/product-2.png";
 import p3 from "@/assets/product-3.png";
@@ -48,9 +48,16 @@ export function AuthShell({ title, subtitle, altText, altLink, altLabel, cta, ch
       </div>
 
       {/* Form side */}
-      <div className="flex items-center justify-center p-8 lg:p-16">
+      <div className="relative flex items-center justify-center p-8 lg:p-16">
+        <Link
+          to="/"
+          className="absolute top-6 left-6 lg:top-8 lg:left-8 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition group"
+        >
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition" />
+          Back to home
+        </Link>
         <div className="w-full max-w-md animate-[fade-in_0.6s_ease-out]">
-          <Link to="/" className="lg:hidden flex items-center gap-2 mb-12">
+          <Link to="/" className="lg:hidden flex items-center gap-2 mb-12 mt-8">
             <div className="w-7 h-7 rounded-full bg-gradient-gold" />
             <span className="font-display text-xl">sumaboss</span>
           </Link>
