@@ -21,14 +21,14 @@ export function Navbar() {
           </Link>
           <ul className="hidden md:flex items-center gap-8 text-sm">
             {links.map((l) => (
-              <li key={l.to}>
-                <Link
-                  to={l.to}
+              <li key={l.href}>
+                <a
+                  href={l.href}
                   className="relative text-muted-foreground hover:text-foreground transition group"
                 >
                   {l.label}
                   <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-gold scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -63,15 +63,21 @@ export function Navbar() {
           </button>
         </div>
         <ul className="flex flex-col items-center justify-center gap-8 mt-20">
-          {[...links, { to: "/login", label: "Sign in" }, { to: "/signup", label: "Join" }].map((l, i) => (
+          {[
+            ...links.map((l) => ({ href: l.href, label: l.label, route: false as const })),
+            { href: "/login", label: "Sign in", route: true as const },
+            { href: "/signup", label: "Join", route: true as const },
+          ].map((l, i) => (
             <li
-              key={l.to}
+              key={l.label}
               style={{ transitionDelay: open ? `${i * 80}ms` : "0ms" }}
               className={`transition-all duration-500 ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
-              <Link to={l.to} onClick={() => setOpen(false)} className="font-display text-4xl hover:text-gradient-gold hover:italic transition">
-                {l.label}
-              </Link>
+              {l.route ? (
+                <Link to={l.href} onClick={() => setOpen(false)} className="font-display text-4xl hover:text-gradient-gold hover:italic transition">{l.label}</Link>
+              ) : (
+                <a href={l.href} onClick={() => setOpen(false)} className="font-display text-4xl hover:text-gradient-gold hover:italic transition">{l.label}</a>
+              )}
             </li>
           ))}
         </ul>
