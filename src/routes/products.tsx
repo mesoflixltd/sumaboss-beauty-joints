@@ -34,13 +34,23 @@ function ProductsPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {allProducts.map((p, i) => (
               <article key={p.name} className="group relative">
-                <div className="relative overflow-hidden rounded-3xl bg-gradient-soft aspect-[4/5] shadow-soft transition-all duration-700 group-hover:shadow-product flex flex-col items-center justify-center p-8">
-                  <img
-                    src={p.imgFront}
-                    alt={p.name}
-                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-                    style={{ filter: "drop-shadow(0 8px 16px rgba(80,60,30,0.25)) contrast(1.15) saturate(1.1) brightness(1.05)" }}
-                  />
+                <div className="relative overflow-hidden rounded-3xl bg-[#FCFAF6] aspect-[4/5] shadow-soft transition-all duration-700 group-hover:shadow-product flex flex-col items-center justify-center p-8">
+                  {/* Soft radial glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,230,210,0.4)_0%,transparent_70%)]" />
+
+                  {/* Image */}
+                  <div className="relative z-10 w-full h-full flex items-center justify-center">
+                    <img
+                      src={p.imgFront}
+                      alt={p.name}
+                      className="max-w-[85%] max-h-[85%] object-contain mix-blend-multiply -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
+                      style={{ filter: "contrast(1.05) saturate(1.1) brightness(0.95)" }}
+                    />
+                  </div>
+
+                  {/* Shadows (Platform effect) */}
+                  <div className="absolute left-1/2 bottom-[15%] -translate-x-1/2 w-[60%] h-[12%] rounded-[50%] bg-[rgba(120,100,80,0.15)] blur-xl transition-all duration-700 group-hover:w-[50%] group-hover:opacity-60" />
+                  <div className="absolute left-[45%] bottom-[25%] -translate-x-1/2 w-[50%] h-[8%] rounded-[50%] bg-[rgba(100,80,60,0.12)] blur-md -rotate-6 transition-all duration-700 group-hover:translate-x-2" />
                   
                   {/* Hover Actions */}
                   <div className="absolute inset-0 bg-background/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">

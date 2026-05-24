@@ -18,48 +18,33 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
   const { ref, inView } = useInView<HTMLElement>(0.4);
   return (
     <article ref={ref} className="group relative">
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-soft aspect-[4/5] shadow-soft transition-all duration-700 group-hover:shadow-product">
-        {/* 3D stage */}
-        <div className="absolute inset-0 flex items-center justify-center p-8 [perspective:1800px]">
-          <div
-            className="relative w-full h-full preserve-3d"
-            style={{
-              animation: "spin-product 14s linear infinite",
+      <div className="relative overflow-hidden rounded-3xl bg-[#FCFAF6] aspect-[4/5] shadow-soft transition-all duration-700 group-hover:shadow-product flex flex-col items-center justify-center">
+        {/* Soft radial glow behind product */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,230,210,0.4)_0%,transparent_70%)]" />
+
+        {/* Static, tilted product image */}
+        <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
+          <img
+            src={p.imgFront}
+            alt={`Sumaboss ${p.name}`}
+            loading="lazy"
+            className="max-w-[85%] max-h-[85%] object-contain mix-blend-multiply -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
+            style={{ 
+              filter: "contrast(1.05) saturate(1.1) brightness(0.95)",
             }}
-          >
-            {/* Front */}
-            <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
-              <img
-                src={p.imgFront}
-                alt={`Sumaboss ${p.name} Front`}
-                loading="lazy"
-                className="max-w-full max-h-full object-contain mix-blend-multiply"
-                style={{ filter: "drop-shadow(0 8px 16px rgba(80,60,30,0.25)) contrast(1.15) saturate(1.1) brightness(1.05)" }}
-              />
-            </div>
-            {/* Back */}
-            <div
-              className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]"
-              style={{ transform: "rotateY(180deg)" }}
-            >
-              <img
-                src={p.imgBack}
-                alt={`Sumaboss ${p.name} Back`}
-                loading="lazy"
-                className="max-w-full max-h-full object-contain mix-blend-multiply"
-                style={{ filter: "drop-shadow(0 8px 16px rgba(80,60,30,0.25)) contrast(1.15) saturate(1.1) brightness(1.05)" }}
-              />
-            </div>
-          </div>
+          />
         </div>
 
-        {/* Ground shadow */}
+        {/* Platform Shadow (Ground shadow) */}
         <div
           aria-hidden
-          className="absolute left-1/2 bottom-8 -translate-x-1/2 w-[55%] h-4 rounded-[50%] bg-foreground/25 blur-md"
-          style={{
-            animation: "shadow-pulse 14s linear infinite",
-          }}
+          className="absolute left-1/2 bottom-[15%] -translate-x-1/2 w-[60%] h-[12%] rounded-[50%] bg-[rgba(120,100,80,0.15)] blur-xl transition-all duration-700 group-hover:w-[50%] group-hover:opacity-60"
+        />
+
+        {/* Close, sharp shadow directly under the tilted product */}
+        <div
+          aria-hidden
+          className="absolute left-[45%] bottom-[25%] -translate-x-1/2 w-[50%] h-[8%] rounded-[50%] bg-[rgba(100,80,60,0.12)] blur-md -rotate-6 transition-all duration-700 group-hover:translate-x-2"
         />
 
         <span className="absolute top-5 left-5 text-[10px] uppercase tracking-widest text-muted-foreground bg-background/80 backdrop-blur px-2 py-1 rounded-full">No. 0{i + 1}</span>
