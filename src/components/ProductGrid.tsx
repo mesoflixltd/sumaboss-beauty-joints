@@ -1,17 +1,14 @@
-import jFront1 from "@/images/althroextrafronyt.jpg";
-import jBack1 from "@/images/arthroextra.jpg";
-import jFront2 from "@/images/download (1).jpg";
-import jBack2 from "@/images/download (2).jpg";
-import jFront3 from "@/images/zaminacol.jpg";
-import jBack3 from "@/images/download.jpg";
+import jFront1 from "@/images/althroextrafronyt-removebg-preview.png";
+import jFront2 from "@/images/download-removebg-preview.png";
+import jFront3 from "@/images/zaminacol-removebg-preview.png";
 import { Plus } from "lucide-react";
 import { Typewriter, useInView } from "./Typewriter";
 import { Link } from "@tanstack/react-router";
 
 const products = [
-  { imgFront: jFront1, imgBack: jBack1, name: "ArthroExtra Joint Glow", tag: "Capsules · 60ct", price: 58, desc: "Type II collagen + turmeric for fluid joints and a luminous complexion. A daily ceremony in a single capsule.", notes: ["Marine collagen", "Curcumin 95%", "Vitamin C halo"] },
-  { imgFront: jFront2, imgBack: jBack2, name: "Radiance Cream", tag: "Topical · 50ml", price: 72, desc: "Peptide-rich cream that soothes joint stiffness while plumping skin with marine botanicals.", notes: ["Peptide complex", "Squalane", "Cooling menthol"] },
-  { imgFront: jFront3, imgBack: jBack3, name: "Zaminacol Flex Serum", tag: "Liquid · 30ml", price: 64, desc: "Bioavailable hyaluronic acid for lubricated joints and dewy skin from the inside out.", notes: ["Hyaluronic acid", "MSM", "Biotin"] },
+  { imgFront: jFront1, name: "ArthroExtra Joint Glow", tag: "Capsules · 60ct", price: 58, desc: "Type II collagen + turmeric for fluid joints and a luminous complexion. A daily ceremony in a single capsule.", notes: ["Marine collagen", "Curcumin 95%", "Vitamin C halo"] },
+  { imgFront: jFront2, name: "Radiance Cream", tag: "Topical · 50ml", price: 72, desc: "Peptide-rich cream that soothes joint stiffness while plumping skin with marine botanicals.", notes: ["Peptide complex", "Squalane", "Cooling menthol"] },
+  { imgFront: jFront3, name: "Zaminacol Flex Serum", tag: "Liquid · 30ml", price: 64, desc: "Bioavailable hyaluronic acid for lubricated joints and dewy skin from the inside out.", notes: ["Hyaluronic acid", "MSM", "Biotin"] },
 ];
 
 function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
@@ -28,9 +25,9 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
             src={p.imgFront}
             alt={`Sumaboss ${p.name}`}
             loading="lazy"
-            className="max-w-[85%] max-h-[85%] object-contain mix-blend-multiply -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
+            className="max-w-[85%] max-h-[85%] object-contain -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
             style={{ 
-              filter: "contrast(1.05) saturate(1.1) brightness(0.95)",
+              filter: "drop-shadow(0px 15px 15px rgba(100,80,60,0.15)) contrast(1.15) saturate(1.15) brightness(1.05)",
             }}
           />
         </div>

@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import jFront1 from "@/images/althroextrafronyt.jpg";
-import jFront2 from "@/images/download (1).jpg";
-import jFront3 from "@/images/zaminacol.jpg";
+import jFront1 from "@/images/althroextrafronyt-removebg-preview.png";
+import jFront2 from "@/images/download-removebg-preview.png";
+import jFront3 from "@/images/zaminacol-removebg-preview.png";
 import { Plus, Eye, ShoppingCart } from "lucide-react";
 
 export const Route = createFileRoute("/products")({
@@ -43,8 +43,8 @@ function ProductsPage() {
                     <img
                       src={p.imgFront}
                       alt={p.name}
-                      className="max-w-[85%] max-h-[85%] object-contain mix-blend-multiply -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
-                      style={{ filter: "contrast(1.05) saturate(1.1) brightness(0.95)" }}
+                      className="max-w-[85%] max-h-[85%] object-contain -rotate-6 transition-transform duration-700 group-hover:-rotate-3 group-hover:scale-105"
+                      style={{ filter: "drop-shadow(0px 15px 15px rgba(100,80,60,0.15)) contrast(1.15) saturate(1.15) brightness(1.05)" }}
                     />
                   </div>
 
