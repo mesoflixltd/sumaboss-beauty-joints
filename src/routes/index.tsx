@@ -15,6 +15,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Sumaboss formulates clinical-grade supplements and creams where radiant skin and supple joints share one elegant daily ritual." },
       { property: "og:title", content: "Sumaboss — Beauty & Joint Care Ritual" },
       { property: "og:description", content: "Glow from within, move without limits. Three products, one ritual." },
+      { property: "og:image", content: "/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sumaboss — Beauty & Joint Care Ritual" },
+      { name: "twitter:description", content: "Glow from within, move without limits. Three products, one ritual." },
+      { name: "twitter:image", content: "/og-image.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

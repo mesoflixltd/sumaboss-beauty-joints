@@ -1,13 +1,17 @@
-import p1 from "@/assets/product-1.png";
-import p2 from "@/assets/product-2.png";
-import p3 from "@/assets/product-3.png";
+import jFront1 from "@/images/althroextrafronyt.jpg";
+import jBack1 from "@/images/arthroextra.jpg";
+import jFront2 from "@/images/download (1).jpg";
+import jBack2 from "@/images/download (2).jpg";
+import jFront3 from "@/images/zaminacol.jpg";
+import jBack3 from "@/images/download.jpg";
 import { Plus } from "lucide-react";
 import { Typewriter, useInView } from "./Typewriter";
+import { Link } from "@tanstack/react-router";
 
 const products = [
-  { img: p1, name: "Joint Glow", tag: "Capsules · 60ct", price: 58, desc: "Type II collagen + turmeric for fluid joints and a luminous complexion. A daily ceremony in a single capsule.", notes: ["Marine collagen", "Curcumin 95%", "Vitamin C halo"] },
-  { img: p2, name: "Radiance Cream", tag: "Topical · 50ml", price: 72, desc: "Peptide-rich cream that soothes joint stiffness while plumping skin with marine botanicals.", notes: ["Peptide complex", "Squalane", "Cooling menthol"] },
-  { img: p3, name: "Flex Serum", tag: "Liquid · 30ml", price: 64, desc: "Bioavailable hyaluronic acid for lubricated joints and dewy skin from the inside out.", notes: ["Hyaluronic acid", "MSM", "Biotin"] },
+  { imgFront: jFront1, imgBack: jBack1, name: "ArthroExtra Joint Glow", tag: "Capsules · 60ct", price: 58, desc: "Type II collagen + turmeric for fluid joints and a luminous complexion. A daily ceremony in a single capsule.", notes: ["Marine collagen", "Curcumin 95%", "Vitamin C halo"] },
+  { imgFront: jFront2, imgBack: jBack2, name: "Radiance Cream", tag: "Topical · 50ml", price: 72, desc: "Peptide-rich cream that soothes joint stiffness while plumping skin with marine botanicals.", notes: ["Peptide complex", "Squalane", "Cooling menthol"] },
+  { imgFront: jFront3, imgBack: jBack3, name: "Zaminacol Flex Serum", tag: "Liquid · 30ml", price: 64, desc: "Bioavailable hyaluronic acid for lubricated joints and dewy skin from the inside out.", notes: ["Hyaluronic acid", "MSM", "Biotin"] },
 ];
 
 function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
@@ -20,19 +24,17 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
           <div
             className="relative w-full h-full preserve-3d"
             style={{
-              animation: inView ? "spin-product 14s linear infinite" : "none",
+              animation: "spin-product 14s linear infinite",
             }}
           >
             {/* Front */}
             <div className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
               <img
-                src={p.img}
-                alt={`Sumaboss ${p.name}`}
+                src={p.imgFront}
+                alt={`Sumaboss ${p.name} Front`}
                 loading="lazy"
-                width={420}
-                height={420}
-                className="max-w-full max-h-full object-contain"
-                style={{ filter: "drop-shadow(0 4px 6px rgba(80,60,30,0.18))" }}
+                className="max-w-full max-h-full object-contain mix-blend-multiply"
+                style={{ filter: "drop-shadow(0 8px 16px rgba(80,60,30,0.25)) contrast(1.15) saturate(1.1) brightness(1.05)" }}
               />
             </div>
             {/* Back */}
@@ -40,15 +42,13 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
               className="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]"
               style={{ transform: "rotateY(180deg)" }}
             >
-              <div className="w-[78%] h-[88%] rounded-3xl bg-gradient-soft border border-gold/30 shadow-soft flex flex-col items-center justify-center p-6 text-center">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">Formula</span>
-                <h4 className="font-display text-xl mb-4">{p.name}</h4>
-                <ul className="space-y-2 text-xs text-muted-foreground">
-                  {p.notes.map((n) => <li key={n}>· {n} ·</li>)}
-                </ul>
-                <div className="mt-5 w-10 h-px bg-gradient-gold" />
-                <span className="mt-3 text-[10px] uppercase tracking-widest text-muted-foreground">sumaboss™</span>
-              </div>
+              <img
+                src={p.imgBack}
+                alt={`Sumaboss ${p.name} Back`}
+                loading="lazy"
+                className="max-w-full max-h-full object-contain mix-blend-multiply"
+                style={{ filter: "drop-shadow(0 8px 16px rgba(80,60,30,0.25)) contrast(1.15) saturate(1.1) brightness(1.05)" }}
+              />
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ function ProductCard({ p, i }: { p: typeof products[number]; i: number }) {
           aria-hidden
           className="absolute left-1/2 bottom-8 -translate-x-1/2 w-[55%] h-4 rounded-[50%] bg-foreground/25 blur-md"
           style={{
-            animation: inView ? "shadow-pulse 14s linear infinite" : "none",
+            animation: "shadow-pulse 14s linear infinite",
           }}
         />
 
@@ -90,7 +90,7 @@ export function ProductGrid() {
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">The Collection</p>
             <h2 className="text-5xl md:text-6xl font-light max-w-xl">Three products. One <span className="italic">ritual</span>.</h2>
           </div>
-          <a href="#" className="hidden md:inline text-sm text-muted-foreground hover:text-foreground transition">View all →</a>
+          <Link to="/products" className="hidden md:inline text-sm text-muted-foreground hover:text-foreground transition">View all →</Link>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((p, i) => <ProductCard key={p.name} p={p} i={i} />)}
